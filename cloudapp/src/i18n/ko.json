@@ -1,0 +1,29 @@
+{
+	"Main": {
+		"LoadRequests": "요청 생성",
+		"DragFile": "파일을 드래그하거나 클릭하여 찾아보기",
+		"Processed": "총 요청 수:",
+		"Updated": "생성된 요청 수:",
+		"Failed": "실패한 요청 수:",
+		"Results":"결과",
+		"ProcessedRequests": "처리된 요청",
+		"Error":"오류"
+	},
+	"Reset": "초기화",
+	"Save": "구하다",
+	"Settings": {
+		"Saved": "설정이 성공적으로 저장되었습니다.",
+		"Title": "설정"
+	},
+	"Help" :{
+		"Title": "Create request 도움말",
+		"Description":"유저 요청을 대량으로 엑셀로 생성하실 때 사용할 수 있는 툴입니다.",
+		"LookupKey": "필수 필드: ",
+		"LookupKeyDescription": "user_id 및 mms_id.",
+		"OptionalLookupKey": "선택적 필드: ",
+		"OptionalLookupKeyDescription": "선택 필드로서 요청이 생성될 서지번호가 들어갈 수 있고 타이틀, volume, issue 정보를 보내서 새로운 서지정보를 만든 후에 새로운 서지정보 위에 유저 요청을 만들수가 있습니다.  ",
+		"UpdateFields": "추가할 수 있는 필드의 경우, 검색 ",
+		"URL" :"rest_user_request.xsd",
+		"FieldNames" :"에서 추가할 필드명을 검색한 후 필드명을 컬럼 레이블로 삽입하고 값을 입력한다."
+	}
+}

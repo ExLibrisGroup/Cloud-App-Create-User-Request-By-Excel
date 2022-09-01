@@ -1,0 +1,17 @@
+{
+   "id": "Create Requests by Excel",
+   "title": "Create Requests by Excel",
+   "subtitle": "Can create requests by uploading excel",
+   "author": "Ex Libris",
+   "icon": {
+      "type": "font",
+      "value": "fa fa-tasks"
+   },
+   "pages": {
+      "help": "/#/help"
+   },
+   "fullscreen": {
+      "allow": true,
+      "open": false
+   }
+}

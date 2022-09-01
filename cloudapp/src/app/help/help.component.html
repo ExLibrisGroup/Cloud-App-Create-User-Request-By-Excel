@@ -1,0 +1,21 @@
+<div class="eca-actions">
+    <button mat-flat-button color="primary" [routerLink]="['/']"><mat-icon>arrow_back</mat-icon>Back</button>
+  </div>
+  
+  <div class="title">
+    <h1 >{{ 'Help.Title' | translate }}</h1>
+  </div>
+  <div>
+    <p >{{ 'Help.Description' | translate }}</p>
+    <h4><strong>{{ 'Help.LookupKey' | translate }}</strong>{{ 'Help.LookupKeyDescription' | translate }}</h4>
+    <p></p>
+
+    <img src="./assets/example.png"  >
+    
+    
+    <h4><strong>{{ 'Help.OptionalLookupKey' | translate }}</strong>{{ 'Help.OptionalLookupKeyDescription' | translate }}</h4>
+    <p></p>
+    <p><strong>{{ 'Help.UpdateFields' | translate }}</strong> <a translate href="https://developers.exlibrisgroup.com/alma/apis/docs/xsd/rest_user_request.xsd/?tags=POST" target="_blank"> {{ 'Help.URL' | translate }}</a> {{ 'Help.FieldNames' | translate }}</p>
+
+    <p><a translate href="https://github.com/ExLibrisGroup/hep-CloudApp-ItemUpdater-Excel/issues" target="_blank">Open an issue</a></p>
+</div>

@@ -1,0 +1,29 @@
+{
+	"Main": {
+		"LoadRequests": "Create Requests",
+		"DragFile": "Drag a file or click to browse",
+		"Processed": "Total number of requests is",
+		"Updated": "Number of created requests is",
+		"Failed": "Number of failed requests is",
+		"Results":"Results",
+		"ProcessedRequests": "Processed Requests",
+		"Error":"Error"
+	},
+	"Reset": "Reset",
+	"Save": "Save",
+	"Settings": {
+		"Saved": "Settings successfully saved.",
+		"Title": "Settings"
+	},
+	"Help" :{
+		"Title": "Create request Help",
+		"Description":"This is a tool that can be used to generate large amounts of user requests in Excel.",
+		"LookupKey": "Required fields: ",
+		"LookupKeyDescription": "user_id and mms_id",
+		"OptionalLookupKey": "Optional fileds: ",
+		"UpdateFields": "For more fields that can be added, search the ",
+		"OptionalLookupKeyDescription": "item_pid  or bibliographic information(volume,issue etc)",
+		"URL" :"rest_user_request.xsd",
+		"FieldNames" :"for the name of the field to be added, and then insert the field name as a column label and enter a value."
+	}
+}
