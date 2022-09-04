@@ -1,7 +1,7 @@
 {
    "id": "Create Requests by Excel",
    "title": "Create Requests by Excel",
-   "subtitle": "Can create requests by uploading excel",
+   "subtitle": "Create multiple requests by uploading an Excel file",
    "author": "Ex Libris",
    "icon": {
       "type": "font",
