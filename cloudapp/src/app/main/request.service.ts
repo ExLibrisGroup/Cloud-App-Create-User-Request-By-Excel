@@ -53,7 +53,13 @@ export class RequestService {
   private handleError(e: any, request: any) {
     const props =  ['user_id', 'mms_id', 'item_pid'].map(p=>request[p]).join(', ');
     if (e) {
-      e.message = e.message + ` (${props})`
+      e.message = e.message + ` (${props})`;
+      e.title = request.title;
+      e.description = request.description;
+      e.pickup_location_library = request.pickup_location_library;
+      e.user_primary_id = request.user_id;
+      e.mms_id = request.mms_id;
+      e.item_id = request.item_pid;
     }
     return e;
   }

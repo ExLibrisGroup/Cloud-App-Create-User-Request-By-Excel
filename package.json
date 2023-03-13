@@ -25,7 +25,7 @@
     "lodash": "~4.17.21",
     "ngx-dropzone": "^2.2.2",
     "rxjs": "~6.5.5",
-    "ts-xlsx": "0.0.11",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {

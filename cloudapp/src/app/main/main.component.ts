@@ -1,9 +1,9 @@
-import { from, of} from 'rxjs';
-import { tap , mergeMap, catchError} from 'rxjs/operators';
+import { from } from 'rxjs';
+import { tap , mergeMap } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RestErrorResponse } from '@exlibris/exl-cloudapp-angular-lib';
 import { TranslateService } from '@ngx-translate/core';
-import * as XLSX from 'ts-xlsx';
+import * as XLSX from 'xlsx';
 import { RequestService } from './request.service';
 
 @Component({
@@ -18,6 +18,8 @@ export class MainComponent implements OnInit, OnDestroy {
   processed = 0;
   resultMessage = '';
   private log = (str: string) => this.resultMessage += str+'\n';  
+  
+  export = [];
   
 
   constructor(
@@ -59,7 +61,7 @@ export class MainComponent implements OnInit, OnDestroy {
         console.log(requests);
         from(requests.filter(request => {
           if (!request['mms_id'] || !request['user_id'] || !request['pickup_location_library']) {
-            results.push({ok: false,status :"",statusText: "",message : ` Mandatory Key is missing (${Object.values(request).join(', ')})`, error :"yes"} );
+            results.push({ok: false,status :"",statusText: "",message : `Mandatory Key is missing (${Object.values(request).join(', ')})`, error :"yes"} );
             this.processed++
           }else{
             return (request)
@@ -78,13 +80,19 @@ export class MainComponent implements OnInit, OnDestroy {
               let CreateRequests = new Array();
               let errorSummary = '';
               results.forEach(res => {
+                let message ='';
+                let status = 'OK'
                 if (isRestErrorResponse(res)) {
                   errorCount++;
                   errorSummary += `${this.translate.instant("Main.Error")}: ${res.message}` +'\n';
+                  message = `${this.translate.instant("Main.Error")} : ${res.message}`;
+                  status = 'Failed';
                 } else {
                   successCount++;
                   CreateRequests.push(res.request_id );
+                  message = `Request created: ${getValueIfExist(res.request_id)}`;
                 }
+                this.export.push({"Result":`${status}`,"user_id":`${getValueIfExist(res.user_primary_id)}`,"mms_id":`${getValueIfExist(res.mms_id)}`,"item_id":`${getValueIfExist(res.item_id)}`,"Message": `${message} `,"title":`${getValueIfExist(res.title)}`,"description":`${getValueIfExist(res.description)}`,"pickup_location_library":`${getValueIfExist(res.pickup_location_library)}`,"request_status":`${getValueIfExist(res.request_status)}`,"request_date":`${getValueIfExist(res.request_date)}`});
               });
               this.log(`${this.translate.instant("Main.Processed")}: ${this.processed}`);
               this.log(`${this.translate.instant("Main.Updated")}: ${successCount}`);
@@ -97,11 +105,25 @@ export class MainComponent implements OnInit, OnDestroy {
               }
               this.loading = false;
               this.files= [];
+              this.exportFile('xlsx');
+              this.export = [];
             }, 500);
           }
         });
     }
     fileReader.readAsArrayBuffer(this.files[0]);
 }
+
+exportFile(type: 'csv' | 'xlsx') {
+  const wb = XLSX.utils.book_new();
+  let ws: XLSX.WorkSheet;
+  
+  ws = XLSX.utils.json_to_sheet(this.export);
+  
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  XLSX.writeFile(wb, `results.${type}`);
 }
+
+}
+const getValueIfExist = value => value != undefined ?  value :  '';
 const isRestErrorResponse = (object: any): object is RestErrorResponse => 'error' in object;
