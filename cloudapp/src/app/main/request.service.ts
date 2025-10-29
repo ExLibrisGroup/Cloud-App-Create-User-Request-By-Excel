@@ -23,8 +23,9 @@ export class RequestService {
     };
     Object.keys(request).forEach(function(key){
       console.log(key);
-      console.log(key + ' - ' + request.key);
-        if(key in ["target_destination","material_type","destination_location","call_number_type","item_policy"]){
+      console.log(key + ' - ' + request[key]);
+        if(["target_destination","material_type","destination_location","call_number_type","item_policy"].includes(key)){
+          requestBoday[key] = {};
           requestBoday[key]['value'] = request[key]
         }else if (key === 'user_id'){
           requestBoday['user_primary_id']=request['user_id'];
